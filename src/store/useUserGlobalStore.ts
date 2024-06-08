@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { IAuthenticatedUser, IUser } from "../types";
+import { IAuthenticatedUser } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IUserGlobalStore {
   user: IAuthenticatedUser | null;
   updatedUser: (user: IAuthenticatedUser | null) => void;
+  clearUser: () => void;
 }
 
 const useUserGlobalStore = create<IUserGlobalStore>()(
@@ -16,6 +17,10 @@ const useUserGlobalStore = create<IUserGlobalStore>()(
         set({
           user,
         });
+      },
+      clearUser: async () => {
+        set({ user: null });
+        await AsyncStorage.removeItem("orole-app-user-store");
       },
     }),
     {

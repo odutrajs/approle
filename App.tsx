@@ -5,8 +5,13 @@ import { ThemeProvider } from "@shopify/restyle";
 import theme from "./src/utils/theme";
 import { SWRConfig } from "swr";
 import { AppState } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    Gotham: require("./assets/fonts/Gotham-Light.otf"),
+    GothamBold: require("./assets/fonts/Gotham-Bold.otf"),
+  });
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>

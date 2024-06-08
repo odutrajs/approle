@@ -29,6 +29,9 @@ const theme = createTheme({
     "rounded-7xl": 28,
   },
   textVariants,
+  default: {
+    fontFamily: "Gotham",
+  },
 });
 
 export type Theme = typeof theme;

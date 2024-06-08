@@ -1,19 +1,23 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Pressable } from "react-native";
+import { Image, Pressable } from "react-native";
 import { IUser } from "../../types";
 import { registerUser } from "../../services/api";
 import SafeAreaWrapper from "../../components/shared/safe-area-wrapper";
 import { Box, Text } from "../../utils/theme";
 import Input from "../../components/shared/input";
-import Button from "../../components/shared/button";
 import { AuthScreenNavigationType } from "../../navigation/types";
+import { BLOSSOM_IMAGE } from "../welcome-screen";
+import Button from "../../components/shared/buttons/button";
 
 const SignUpScreen = () => {
   const navigation = useNavigation<AuthScreenNavigationType<"SignUp">>();
   const navigateToSignInScreen = () => {
     navigation.navigate("SignIn");
+  };
+  const navigateToMusicalPreference = (email: string) => {
+    navigation.navigate("MusicalPreference", { email });
   };
 
   const {
@@ -30,27 +34,36 @@ const SignUpScreen = () => {
   const onSubmit = async (data: IUser) => {
     try {
       const { email, name, password } = data;
-      /**
-       * register user
-       */
       await registerUser({
         email,
         name,
         password,
       });
-      navigateToSignInScreen();
+      navigateToMusicalPreference(email);
     } catch (error) {}
   };
 
   return (
     <SafeAreaWrapper>
-      <Box flex={1} px="5.5" mt={"13"}>
-        <Text variant="textXl" fontWeight="700">
-          Welcome to Blossom!
-        </Text>
-        <Text variant="textXl" fontWeight="700" mb="6">
-          Your journey starts here
-        </Text>
+      <Box
+        flex={1}
+        px="5.5"
+        justifyContent="center"
+        style={{ backgroundColor: "#000" }}
+      >
+        <Box alignItems="center">
+          <Image
+            resizeMode="stretch"
+            source={{
+              uri: BLOSSOM_IMAGE,
+              width: 150,
+              height: 150,
+            }}
+          />
+          <Text color="white" variant="text2Xl" fontWeight="500" mt="2">
+            Criar uma conta
+          </Text>
+        </Box>
 
         <Controller
           control={control}

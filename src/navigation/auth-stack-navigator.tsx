@@ -4,6 +4,7 @@ import { AuthStackParamList } from "./types";
 import Welcome from "../screens/welcome-screen";
 import SignInScreen from "../screens/signIn";
 import SignUpScreen from "../screens/signup";
+import MusicalPreference from "../screens/signup/musicalPreference";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -23,6 +24,11 @@ const AuthStackNavigator = () => {
       <Stack.Screen
         name="SignUp"
         component={SignUpScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MusicalPreference"
+        component={MusicalPreference}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

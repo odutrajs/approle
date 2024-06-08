@@ -7,7 +7,14 @@ type IconProps = {
   color?: string;
 };
 
-type IconName = "home" | "completed" | "categories" | "calendar";
+type IconName =
+  | "home"
+  | "completed"
+  | "categories"
+  | "calendar"
+  | "filter"
+  | "clock"
+  | "location";
 
 const Home = ({ color = "black", height = 20, width = 20 }: IconProps) => (
   <Svg width={width} height={height} viewBox="0 0 19 20" fill="none">
@@ -17,6 +24,46 @@ const Home = ({ color = "black", height = 20, width = 20 }: IconProps) => (
     />
   </Svg>
 );
+
+const Filter = ({ color = "white", height = 20, width = 20 }: IconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 19 20" fill="none">
+    <Path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke={color}
+      d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
+    />
+  </Svg>
+);
+
+const Clock = ({ color = "white", height = 20, width = 20 }: IconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 25 25" fill="none">
+    <Path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      stroke={color}
+    />
+  </Svg>
+);
+
+const Location = ({ color = "white", height = 20, width = 20 }: IconProps) => (
+  <Svg width={width} height={height} viewBox="0 0 25 25" fill="none">
+    <Path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      stroke={color}
+    />
+    <Path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+      stroke={color}
+    />
+  </Svg>
+);
+
 const Completed = ({ color = "black", height = 20, width = 20 }: IconProps) => (
   <Svg width={width} height={height} viewBox="0 0 19 18" fill="none">
     <Circle cx={9.5} cy={9} r={8.5} stroke={color} />
@@ -83,6 +130,12 @@ const Icons = ({
       return <Categories color={color} height={height} width={width} />;
     case "calendar":
       return <Calendar color={color} height={height} width={width} />;
+    case "filter":
+      return <Filter color={color} height={height} width={width} />;
+    case "clock":
+      return <Clock color={color} height={height} width={width} />;
+    case "location":
+      return <Location color={color} height={height} width={width} />;
   }
 };
 

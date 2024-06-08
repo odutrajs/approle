@@ -7,7 +7,7 @@ type SafeAreaWrapperProps = {
 
 const SafeAreaWrapper = ({ children }: SafeAreaWrapperProps) => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       {children}
     </SafeAreaView>
   );

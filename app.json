@@ -23,8 +23,16 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-secure-store"
+    "plugins": ["expo-secure-store", "expo-font"],
+    "fonts": [
+      {
+        "fontName": "Gotham",
+        "asset": "./assets/fonts/Gotham-Light.otf"
+      },
+      {
+        "fontName": "GothamBold",
+        "asset": "./assets/fonts/Gotham-Bold.otf"
+      }
     ]
   }
 }

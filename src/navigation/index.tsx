@@ -6,10 +6,10 @@ import { useEffect } from "react";
 
 const Navigation = () => {
   const { user } = useUserGlobalStore();
-
+  useEffect(() => {}, [user]);
   return (
     <NavigationContainer>
-      <AuthStackNavigator />
+      {user ? <AppStackNavigator /> : <AuthStackNavigator />}
     </NavigationContainer>
   );
 };

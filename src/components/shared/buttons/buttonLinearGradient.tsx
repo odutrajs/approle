@@ -1,5 +1,6 @@
 import { Pressable } from "react-native";
-import { Box, Text } from "../../utils/theme";
+import { Text } from "../../../utils/theme";
+import { LinearGradient } from "expo-linear-gradient";
 
 type ButtonProps = {
   label: string;
@@ -7,21 +8,33 @@ type ButtonProps = {
   onLongPress?: () => void;
   disabled?: boolean;
   uppercase?: boolean;
+  gradientLeft?: string;
+  gradientRight?: string;
 };
 
-const Button = ({
+const ButtonLinearGradient = ({
   label,
   onLongPress,
   onPress,
   disabled,
   uppercase,
+  gradientLeft,
+  gradientRight,
 }: ButtonProps) => {
   return (
     <Pressable onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
-      <Box
-        bg={disabled ? "gray800" : "primary"}
-        py="3.5"
-        borderRadius="rounded-7xl"
+      <LinearGradient
+        colors={[
+          gradientLeft ? gradientLeft : "#fba72a",
+          gradientRight ? gradientRight : "#dd0769",
+        ]}
+        style={{
+          paddingTop: 14,
+          paddingBottom: 14,
+          borderRadius: 14,
+        }}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
       >
         <Text
           variant="textXs"
@@ -32,9 +45,9 @@ const Button = ({
         >
           {label}
         </Text>
-      </Box>
+      </LinearGradient>
     </Pressable>
   );
 };
 
-export default Button;
+export default ButtonLinearGradient;

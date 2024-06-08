@@ -1,6 +1,5 @@
 import {
   CompositeNavigationProp,
-  CompositeScreenProps,
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -9,6 +8,8 @@ export type AuthStackParamList = {
   Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
+  MusicalPreference: { email?: string };
+  CustomModal: undefined;
 };
 
 export type RootBottomTabParamList = {

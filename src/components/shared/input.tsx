@@ -1,5 +1,10 @@
 import { FieldError } from "react-hook-form";
-import { StyleSheet, TextInput, TextInputProps } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+} from "react-native";
 import theme, { Box, Text } from "../../utils/theme";
 
 type InputProps = {
@@ -10,15 +15,18 @@ type InputProps = {
 const Input = ({ label, error, ...props }: InputProps) => {
   return (
     <Box flexDirection="column">
-      <Text variant="textXs" textTransform="uppercase" mb="3.5">
+      <Text variant="textXs" textTransform="uppercase" mb="3.5" color="white">
         {label}
       </Text>
+      <TouchableOpacity></TouchableOpacity>
       <TextInput
         style={{
-          padding: 16,
+          padding: 15,
           borderWidth: 1,
-          borderColor: error ? theme.colors.rose500 : theme.colors.grey,
-          borderRadius: theme.borderRadii["rounded-7xl"],
+          backgroundColor: "#000",
+          borderColor: error ? theme.colors.rose500 : "#0a4c6c",
+          borderRadius: theme.borderRadii["rounded-3xl"],
+          color: "white",
         }}
         {...props}
       />
